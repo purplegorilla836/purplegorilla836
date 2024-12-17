@@ -1,0 +1,83 @@
+name: Date-TEST-BOOM
+
+on: 
+  push:
+    branches: [ "main" ]
+
+jobs:
+  a1:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 130
+      fail-fast: false
+      matrix:
+        go: [1.1, 1.2, 1.3, 1.4, 1.5]
+        flag: [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z]
+    env:
+        NUM_JOBS: 130
+        JOB: ${{ matrix.go }}
+    steps:
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v1
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: a1-build
+      uses: actions/checkout@v1
+    - name: Main
+      run: date
+  a2:
+    needs: a1
+    runs-on: windows-latest
+    strategy:
+      max-parallel: 130
+      fail-fast: false
+      matrix:
+        go: [1.1, 1.2, 1.3, 1.4, 1.5]
+        flag: [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z]
+    env:
+        NUM_JOBS: 130
+        JOB: ${{ matrix.go }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v1
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: a2-build
+      run: echo 'Hello Mordial'
+     
+  a3:
+    needs: [a1]
+    runs-on: windows-latest
+    strategy:
+      max-parallel: 130
+      fail-fast: false
+      matrix:
+        go: [1.1, 1.2, 1.3, 1.4, 1.5]
+        flag: [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z]
+    env:
+        NUM_JOBS: 130
+        JOB: ${{ matrix.go }}
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Go ${{ matrix.go }}
+      uses: actions/setup-go@v1
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+    - name: a3-build
+      run: echo "Hello Seynie"
+  Success:
+    needs: [a1, a2, a3]
+    if: always()
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: technote-space/workflow-conclusion-action@v2
+      - name: Check Failure
+        if: env.WORKFLOW_CONCLUSION == 'failure'
+        run: exit 1
+      - name: Success
+        if: ${{ success() }}
+        run: echo "selesai"
